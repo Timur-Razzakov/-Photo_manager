@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'app',
-
+    # 'django-filters'
     'rest_framework',
-    # 'rest_framework.authtoken',
+    'rest_framework.authtoken',
+    'djoser',
     'rest_framework_swagger',
-    # 'djoser',
 
 ]
 
@@ -128,7 +128,15 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
+    # 'DEFAULT_FILTER_BACKENDS': [
+    #     'django_filters.rest_framework.DjangoFilterBackend'
+    # ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
 
+    ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ]
