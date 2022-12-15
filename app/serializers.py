@@ -5,8 +5,7 @@ from .models import Photo
 
 class PhotoListSerializer(serializers.ModelSerializer):
     """Вывод списка изображений"""
-    '''Автоматически заполняем поле User, после входа пользователя'''
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
 
     class Meta:
         model = Photo
@@ -15,7 +14,8 @@ class PhotoListSerializer(serializers.ModelSerializer):
 
 class PhotoDetailSerializer(serializers.ModelSerializer):
     """Вывод полной информации об изображении"""
-
+    '''Автоматически заполняем поле User, после входа пользователя'''
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Photo
         fields = "__all__"
