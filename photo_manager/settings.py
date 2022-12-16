@@ -40,12 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'app',
-    # 'django-filters'
     'rest_framework',
+
+    # для аутентификации
     'rest_framework.authtoken',
     'djoser',
+    #для документации
     'rest_framework_swagger',
-
+    # для фильтрации данных
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -128,9 +131,9 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
-    # 'DEFAULT_FILTER_BACKENDS': [
-    #     'django_filters.rest_framework.DjangoFilterBackend'
-    # ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         "rest_framework.authentication.SessionAuthentication",

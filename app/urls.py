@@ -1,4 +1,6 @@
 from django.urls import path
+from rest_framework.urlpatterns import format_suffix_patterns
+
 from . import views
 from .views import PhotoViewSet
 
@@ -23,8 +25,8 @@ from .views import PhotoViewSet
 #     path('', include(router.urls)),
 # ]
 
-urlpatterns = [
+urlpatterns = format_suffix_patterns([
     path('images/', views.PhotoViewSet.as_view()),
     path("images/create/", views.PhotoAPICreate.as_view()),
     path("images/<int:pk>/", views.PhotoAPIDeleteUpdate.as_view()),
-]
+])
