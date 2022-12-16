@@ -1,17 +1,17 @@
-# from rest_framework import filters
+from django_filters import rest_framework as rest_filters
+from rest_framework import generics, permissions, filters
 
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics, permissions
+from .image_filter import ImageFilter
 from .models import Photo
 from .serializers import PhotoDetailSerializer, PhotoListSerializer
-from .image_filter import ImageFilter
 
 
 class PhotoViewSet(generics.ListAPIView):
     """Вывод списка изображений"""
     serializer_class = PhotoListSerializer
     queryset = Photo.objects.all()
-    filter_backends = (DjangoFilterBackend,)
+    filter_backends = (rest_filters.DjangoFilterBackend, filters.SearchFilter)
+    search_fields = ['^names_people_photo', ]
     filterset_class = ImageFilter
 
     """Переопределяем метод  """

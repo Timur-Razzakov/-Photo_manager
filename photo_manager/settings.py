@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+
 import dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     # для аутентификации
     'rest_framework.authtoken',
     'djoser',
-    #для документации
+    # для документации
     'rest_framework_swagger',
     # для фильтрации данных
     'django_filters',

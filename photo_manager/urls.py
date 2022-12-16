@@ -3,12 +3,11 @@ from django.urls import path, include, re_path
 from django.views.generic import TemplateView
 from rest_framework.schemas import get_schema_view
 
-
 urlpatterns = [
     # для вывода документации о API (swagger)
     path('Photo_manager', get_schema_view(title="Photo Manager",
-                                       description='Документация к тестовому API сервису '
-                                       ), name='Photo_manager'),
+                                          description='Документация к тестовому API сервису '
+                                          ), name='Photo_manager'),
     path('docs/', TemplateView.as_view(
         template_name='index.html',
         extra_context={'schema_url': 'Photo_manager'}

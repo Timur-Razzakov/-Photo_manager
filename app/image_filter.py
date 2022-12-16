@@ -8,10 +8,11 @@ class CharFilterInFilter(filters.BaseInFilter, filters.CharFilter):
 
 
 class ImageFilter(filters.FilterSet):
+    """Фильтрация изображений по геопозиции, дате и по создателю данных"""
     geo_position = CharFilterInFilter(field_name='geo_position', lookup_expr='in')
     user_created = CharFilterInFilter(field_name='user__username', lookup_expr='in')
     created_at = filters.DateFromToRangeFilter()
 
     class Meta:
         model = Photo
-        fields = ['geo_position', 'created_at','names_people_photo']
+        fields = ['geo_position', 'created_at', 'user_created']
