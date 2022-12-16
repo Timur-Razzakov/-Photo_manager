@@ -14,9 +14,9 @@ urlpatterns = [
         extra_context={'schema_url': 'Photo_manager'}
     ), name='docs'),
     path('admin/', admin.site.urls),
-    path('v1/', include('app.urls')),
+    path('', include('app.urls')),
     # авторизация и регистрация
-    path('v1/auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
 
 ]

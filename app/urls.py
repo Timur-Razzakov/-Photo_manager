@@ -4,7 +4,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 from .views import PhotoViewSet
 
-# class MyCustomRouter(routers.SimpleRouter):
+# class MyCustomRouter(routers.DefaultRouter):
 #     routes = [
 #         routers.Route(url=r'^{prefix}$',
 #                       mapping={'get': 'list'},
@@ -26,7 +26,7 @@ from .views import PhotoViewSet
 # ]
 
 urlpatterns = format_suffix_patterns([
-    path('images/', views.PhotoViewSet.as_view()),
-    path("images/create/", views.PhotoAPICreate.as_view()),
-    path("images/<int:pk>/", views.PhotoAPIDeleteUpdate.as_view()),
+    path('', views.PhotoViewSet.as_view()),
+    path("image/create/", views.PhotoAPICreate.as_view()),
+    path("image/<int:pk>/", views.PhotoAPIDeleteUpdate.as_view()),
 ])
