@@ -1,3 +1,4 @@
+from icecream import ic
 from rest_framework import status
 from rest_framework.authtoken.admin import User
 from rest_framework.authtoken.models import Token
@@ -34,10 +35,23 @@ class CaseTests(APITestCase):
         response = self.client.get('http://0.0.0.0:8000/image/create/')
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
-
     def test_create_valid_image(self):
         """Проверяем можем ли мы создать изображения после аутентификации """
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user_test_01_token.key)
         response = self.client.post('http://0.0.0.0:8000/image/create/', self.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+    def test_search_fiter(self):
+        """Проверяем фильтр по поиску людей, на фото """
+        response = self.client.get('http://127.0.0.1:8000/?search=Алекс')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_geo_fiter(self):
+        """Проверяем фильтр по геопозиции """
+        response = self.client.get('http://127.0.0.1:8000/?geo_position==USA')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_docs(self):
+        """Проверяем страницу с документацией """
+        response = self.client.get('http://0.0.0.0:8000/docs/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
