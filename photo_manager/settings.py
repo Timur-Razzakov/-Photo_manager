@@ -132,6 +132,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
+
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
     ],
@@ -142,25 +143,9 @@ REST_FRAMEWORK = {
 
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ]
 }
-#
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAuthenticated',
-#     ],
-#     "DEFAULT_PARSER_CLASSES": [
-#         "rest_framework.parsers.JSONParser",
-#     ],
-#     "DEFAULT_AUTHENTICATION_CLASSES": [
-#         'rest_framework.authentication.TokenAuthentication',
-#         "rest_framework.authentication.SessionAuthentication",
-#         "rest_framework_simplejwt.authentication.JWTAuthentication",
-#
-#     ],
-#
-# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -197,3 +182,6 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {},
 }
+
+# ConnectionRefusedError: [Errno 111]
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -14,14 +14,6 @@ class PhotoViewSet(generics.ListAPIView):
     search_fields = ['^names_people_photo', ]
     filterset_class = ImageFilter
 
-    """Переопределяем метод  """
-    #
-    # def get_serializer_class(self):
-    #     if self.action == 'list':
-    #         return PhotoListSerializer
-    #     elif self.action == "retrieve":
-    #         return PhotoDetailSerializer
-
 
 class PhotoAPICreate(generics.CreateAPIView):
     """Добавление новых изображений"""

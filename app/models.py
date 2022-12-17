@@ -6,7 +6,7 @@ from django.db import models
 
 
 class Photo(models.Model):
-    """модель для фотографий"""
+    """Модель для фотографий"""
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_id')
     title = models.CharField(max_length=120, verbose_name='наименование фото')
     geo_position = models.CharField(max_length=400, verbose_name='геопозиция', blank=True, null=True, )
